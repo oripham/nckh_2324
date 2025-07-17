@@ -1,0 +1,55 @@
+begin_rules
+
+begin_rule
+    kind_rule = "GRAPH";
+    A:char;
+    G:GRAPH
+    hypothesis_part:
+        {["THUOC",A,G]}
+    end_hypothesis_part
+    goal_part:
+        {G.V=`union`({A},G.V), hasVertex(G,A)="true"}
+    end_goal_part
+	
+end_rule
+
+begin_rule
+    kind_rule = "GRAPH";
+    A:char;
+    G:GRAPH
+    hypothesis_part:
+        {G.V=`union`({A},G.V)}
+    end_hypothesis_part
+    goal_part:
+        {["THUOC",A,G]}
+    end_goal_part
+	
+end_rule
+
+begin_rule
+    kind_rule = "GRAPH";
+    A,B:char;
+    e:EDGE;
+    G:GRAPH;
+    hypothesis_part:
+        {[e,"EDGE[A,B]"],["THUOC",e,G]}
+    end_hypothesis_part
+    goal_part:
+        {["THUOC",A,G],["THUOC",B,G],G.E=`union`(G.E,{e}), hasEdge(G,e)="true"}
+    end_goal_part
+end_rule
+
+begin_rule
+    kind_rule = "GRAPH";
+    A,B:char;
+    e:EDGE;
+    G:GRAPH;
+    hypothesis_part:
+	{[e,"EDGE[A,B]"],G.E=`union`(G.E,{e})}
+    end_hypothesis_part
+    goal_part:
+        {["THUOC",e,G],["THUOC",A,G],["THUOC",B,G]}
+    end_goal_part
+end_rule
+
+end_rules

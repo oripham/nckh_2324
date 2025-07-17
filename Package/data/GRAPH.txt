@@ -1,0 +1,28 @@
+begin_object: GRAPH[V,E];
+	V : set;
+  	E : set;
+  begin_variables
+    num_vertices: integer;
+    num_edges: integer; 
+  end_variables
+
+  begin_construct_relations
+  end_construct_relations
+
+  begin_properties
+    directed: boolean;
+
+  end_properties
+
+  begin_computation_relations
+	num_vertices=nops(V)
+	num_edges=nops(E)
+  end_computation_relations
+
+  begin_rules
+  end_rules
+
+  begin_functions
+  end_functions
+
+end_object

@@ -1,0 +1,7 @@
+begin_Relations
+
+[THUOC, char, GRAPH],{}
+[THUOC, EDGE, GRAPH],{}
+[THUOC, char, EDGE],{}
+
+end_Relations

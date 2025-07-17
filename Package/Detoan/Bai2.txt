@@ -1,0 +1,47 @@
+begin_exercise
+
+  kind_ex = ””
+
+  begin_hypothesis
+
+    parameters:   
+    end_parameters
+
+    objects:  
+	AB,BC,CD,AE,BF,CF,BE: EDGE
+	G: GRAPH
+    end_objects
+
+    facts:
+	[AB,"EDGE[A,B]"]
+	AB.weight=5
+	[BC,"EDGE[B,C]"]
+	BC.weight =6
+	[CD,"EDGE[C,D]"]
+	CD.weight =4
+	[AE,"EDGE[A,E]"]
+	AE.weight = 5
+	[BF,"EDGE[B,F]"]
+	BF.weight = 3
+	[CF,"EDGE[C,F]"]
+	CF.weight = 6
+	[BE,"EDGE[B,E]"]
+	BE.weight = 4
+	["THUOC",AB,G]	
+	["THUOC",BC,G]	
+	["THUOC",CD,G]	
+	["THUOC",AE,G]	
+	["THUOC",BF,G]	
+	["THUOC",CF,G]	
+	["THUOC",BE,G]		
+     end_facts
+
+    functions:
+    end_functions
+  end_hypothesis
+
+  begin_goal
+    kruskal(G)
+  end_goal
+
+end_exercise

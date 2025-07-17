@@ -1,0 +1,121 @@
+begin_functions
+
+begin_function: addVertex(G,A)
+  A: char
+  G: GRAPH
+  return `set`
+  begin_proc
+	G.V=G.V union {A};
+	return G.V;
+  end_proc
+  properties
+	["THUOC",v,G];
+  end_properties
+end_function
+
+begin_function: addEdge(G,e)
+  e: EDGE
+  G: GRAPH
+  return `set`
+  begin_proc
+	 G.E=G.E union e;
+	return G.E;
+  end_proc
+  properties
+  end_properties
+end_function
+
+begin_function: hasEdge(G,e)
+  e: EDGE
+  G: GRAPH
+  return boolean
+  begin_proc
+	return member(e,G.E);
+  end_proc
+  properties
+  end_properties
+end_function
+
+begin_function: hasVertex(G,v)
+  v: char
+  G: GRAPH
+  return boolean
+  begin_proc
+	if(G.V=`union`(G.V,v) return true;
+	return false;
+  end_proc
+  properties
+	["THUOC",v,G];
+  end_properties
+end_function
+
+begin_function: vertexes(G)
+  G: GRAPH
+  return `set`
+  begin_proc
+	return G.V;
+  end_proc
+  properties
+  end_properties
+end_function
+
+
+begin_function: kruskal(G)
+  G: GRAPH
+  return treeEdges:`set`
+
+  begin_proc
+    local vertices, edges, edge, sortedEdges, numVertices, forest, treeEdges, root1, root2, find, union;
+
+    # Helper function to find the set containing the element
+    find := proc(x, forest)
+        local item;
+        for item in forest do
+            if member(x, item) then
+                return item;
+            end if;
+        end do;
+    end;
+
+    # Helper function to union two sets
+    union := proc(set1, set2, forest)
+        forest := subs(forest = forest minus {set1, set2}, forest);
+        return {op(set1), op(set2)} union forest;
+    end;
+
+    # Extract vertices and edges
+    vertices := G.V;
+    edges := G.E;
+
+    # Sort edges by weight
+    sortedEdges := sort([seq(e, e in edges)], (a, b) -> a.weight < b.weight);
+
+    # Initialize the forest where each vertex is its own set
+    forest := map(x -> {x}, vertices);
+
+    # Initialize the set for the edges of the minimum spanning tree
+    treeEdges := {};
+
+    # Kruskal's main loop
+    for edge in sortedEdges do
+        root1 := find(edge[1], forest);
+        root2 := find(edge[2], forest);
+        
+        if root1 <> root2 then
+            treeEdges := treeEdges union {edge};
+            forest := union(root1, root2, forest);
+        end if;
+        
+        # Stop if we have enough edges
+        if nops(treeEdges) = nops(vertices) - 1 then
+            break;
+        end if;
+    end do;
+
+    return treeEdges;
+  end_proc
+  properties
+  end_properties
+end_function
+
+end_functions

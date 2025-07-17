@@ -1,0 +1,8 @@
+begin_functions
+    boolean hasEdge(GRAPH, EDGE) {}
+    boolean hasVertex(GRAPH, char) {}
+    set addEdge(GRAPH, EDGE) {}
+    set addVertex(GRAPH, char) {}
+    set vertexes(GRAPH) {}
+    set kruskal(GRAPH) {"doi xung"}
+end_functions

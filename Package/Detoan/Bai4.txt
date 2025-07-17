@@ -1,0 +1,29 @@
+begin_exercise
+
+  kind_ex = ””
+
+  begin_hypothesis
+
+    parameters:   
+    end_parameters
+
+    objects:  
+
+	x:char
+	g:string
+  end_objects
+	
+    facts:
+	g="!(!x)"
+     end_facts
+	
+    functions:	
+    end_functions
+	
+  end_hypothesis
+
+  begin_goal
+	g
+  end_goal
+
+end_exercise

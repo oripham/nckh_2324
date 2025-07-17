@@ -1,0 +1,33 @@
+begin_exercise
+
+  kind_ex = ””
+
+  begin_hypothesis
+
+    parameters:   
+    end_parameters
+
+    objects:  
+      G:GRAPH
+	AB,BC,AD:EDGE
+	A,B,C,D,O:char
+    end_objects
+
+    facts:
+	[AB,"EDGE[A,B]"]
+	[BC,"EDGE[B,C]"]
+	[AD,"EDGE[A,D]"]
+	["THUOC",AB,G]
+	["THUOC",AD,G]
+	["THUOC",BC,G]
+     end_facts
+
+    functions:
+    end_functions
+  end_hypothesis
+
+  begin_goal
+    G.E,G.V,hasVertex(G,A),hasVertex(G,O)
+  end_goal
+
+end_exercise
